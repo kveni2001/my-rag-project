@@ -1,0 +1,17 @@
+# Python Bytecode / Cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual Environment
+venv/
+.venv/
+
+# Environment Variables & Keys
+.env
+
+# Vector Database Storage (Local Data)
+vector_db/
+chroma_store/
+faiss_store/
