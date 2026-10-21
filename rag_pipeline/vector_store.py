@@ -43,7 +43,12 @@ class ChromaVectorStore(VectorStore):
     ):
         import chromadb
 
-        self.persist_dir = persist_dir or config.CHROMA_PERSIST_DIR
+        raw_persist = persist_dir or config.CHROMA_PERSIST_DIR
+        persist_path = Path(raw_persist)
+        if not persist_path.is_absolute():
+            persist_path = (config.BASE_DIR / persist_path).resolve()
+
+        self.persist_dir = str(persist_path)
         self.collection_name = collection_name or config.COLLECTION_NAME
 
         # Ensure storage directory exists
@@ -184,7 +189,11 @@ class FAISSVectorStore(VectorStore):
                 "faiss package is not installed. Install via `pip install faiss-cpu`."
             )
 
-        self.index_path = index_path or config.FAISS_INDEX_PATH
+        raw_index = index_path or config.FAISS_INDEX_PATH
+        idx_path = Path(raw_index)
+        if not idx_path.is_absolute():
+            idx_path = (config.BASE_DIR / idx_path).resolve()
+        self.index_path = str(idx_path)
         self.dimension = dimension
 
         self.documents: List[str] = []

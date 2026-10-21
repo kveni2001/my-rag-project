@@ -1,17 +1,109 @@
-# Python Bytecode / Cache
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
+# =====================================================================
+# 1. Environment Variables & Secrets (NEVER push API keys)
+# =====================================================================
+.env
+.env.*
+*.env
+rag_pipeline/.env
+!.env.example
 
-# Virtual Environment
+# =====================================================================
+# 2. Python & Virtual Environments
+# =====================================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual Environment directories (any location)
 venv/
 .venv/
+env/
+ENV/
+**/venv/
+**/.venv/
+rag_pipeline/venv/
+pyvenv.cfg
 
-# Environment Variables & Keys
-.env
+# =====================================================================
+# 3. Node.js & Frontend (React / Vite)
+# =====================================================================
+node_modules/
+**/node_modules/
+frontend/node_modules/
+dist/
+**/dist/
+frontend/dist/
+dist-ssr/
+*.local
 
-# Vector Database Storage (Local Data)
+# Node package manager logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# =====================================================================
+# 4. Vector Database & Persistent Storage (Local DB files)
+# =====================================================================
 vector_db/
+**/vector_db/
 chroma_store/
+**/chroma_store/
 faiss_store/
+**/faiss_store/
+*.sqlite3
+*.sqlite
+*.index
+*.pkl
+
+# =====================================================================
+# 5. Machine Learning Models & Cache
+# =====================================================================
+.cache/
+**/.cache/
+huggingface/
+torch/
+*.pt
+*.pth
+*.bin
+*.onnx
+*.safetensors
+
+# =====================================================================
+# 6. Uploaded Knowledge Documents (Avoid committing large private files)
+# =====================================================================
+rag_pipeline/documents/*
+!rag_pipeline/documents/.gitkeep
+documents/*
+!documents/.gitkeep
+
+# =====================================================================
+# 7. Operating System & Editor Metadata
+# =====================================================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+desktop.ini
+$RECYCLE.BIN/
+
+# IDEs
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.sublime-workspace
+*.sublime-project
+
+# =====================================================================
+# 8. General Logs
+# =====================================================================
+*.log
+logs/
